@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+//Hashクラスを読み込み
+use Illuminate\Support\Facades\Hash;
+
 class SessionController extends Controller
 {
     public function create(){
@@ -15,7 +18,7 @@ class SessionController extends Controller
     }
     public function store(Request $request){
         $user = User::where('name', $request->name)->first();
-        if($user->password !== $request->password){
+        if(Hash::check($request->password,$user->password)===false){
             session()->flash('danger', 'ログインに失敗しました。');
             return redirect()->route('session.create');
         }

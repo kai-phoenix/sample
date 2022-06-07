@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\UserRequest;
 
+//Hashクラスを読み込み
+use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     public function create(){
@@ -16,9 +19,11 @@ class UserController extends Controller
     }
     
     public function store(UserRequest $request){
-        $user = User::create($request->only([
-            'name', 'password'
-        ]));
+        $user = User::create([
+            'name'=>$request->name,
+            //ハッシュ化
+            'password'=>Hash::make($request->password),
+            ]);
         session()->put('user_id', $user->id);
         return redirect()->route('posts.index');
     }
