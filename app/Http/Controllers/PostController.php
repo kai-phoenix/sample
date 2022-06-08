@@ -66,15 +66,16 @@ class PostController extends Controller
       if($user === null){
         return redirect()->route('session.create');
       }
-      $sql = "
-        UPDATE
-          posts
-        SET
-          comment = '{$request->comment}'
-        WHERE
-          id = {$post->id}
-      ";
-      \DB::update($sql);
+      // $sql = "
+      //   UPDATE
+      //     posts
+      //   SET
+      //     comment = '{$request->comment}'
+      //   WHERE
+      //     id = {$post->id}
+      // ";
+      // \DB::update($sql);
+      $post->update($request->only(['comment']));
       session()->flash('success', '投稿を編集しました');
       return redirect()->route('posts.index');
     }
