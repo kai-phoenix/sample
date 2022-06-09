@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+//Hashクラスを読み込み
+use Illuminate\Support\Facades\Hash;
 
 //Hashクラスを読み込み
 use Illuminate\Support\Facades\Hash;

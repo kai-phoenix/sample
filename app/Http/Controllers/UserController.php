@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Http\Requests\UserRequest;
+// Hash クラスを読み込み
+use Illuminate\Support\Facades\Hash;
 
 //Hashクラスを読み込み
 use Illuminate\Support\Facades\Hash;
