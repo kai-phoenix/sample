@@ -5,6 +5,8 @@
 @section('content')
   <h1>{{ $title }}</h1>
   <form method="POST" action="{{ route('posts.store') }}">
+    <!--CSRF脆弱性の修正/11-->
+    @csrf
       <div>
           <label>
             コメント:<br>
