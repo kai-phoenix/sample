@@ -20,6 +20,8 @@
         </li>
         <li>
           <form method="post" action="{{ route('session.destroy') }}" >
+            <!--CSRF脆弱性の修正/11-->
+            @csrf
             @method('delete')
             <input type="submit" value="ログアウト">
           </form>

@@ -4,6 +4,8 @@
   <h1>{{ $title }}</h1>
 
   <form method="POST" action="{{ route('users.store') }}">
+    <!--CSRF脆弱性の修正/11-->
+    @csrf
     <div>
       <label>
         ユーザー名:

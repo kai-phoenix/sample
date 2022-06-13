@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $fillable = ['name', 'password', 'description', 'admin'];
+    protected $fillable = ['name', 'password', 'description'];
     
     public function posts(){
         return $this->hasMany('App\Post');
